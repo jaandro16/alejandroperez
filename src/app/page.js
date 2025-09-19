@@ -19,7 +19,7 @@ export default function HomePage() {
           <div className={`transition-all duration-1000 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>
             {/* Greeting */}
             <div className="mb-8">
-              <p className="text-lg sm:text-xl text-primary font-medium mb-2">Hello, I'm</p>
+              <p className="text-lg sm:text-xl text-primary font-medium mb-2">Hello, I am</p>
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-4">
                 <span className="gradient-text">Alejandro Pérez</span>
               </h1>
@@ -145,7 +145,7 @@ export default function HomePage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <blockquote className="text-2xl sm:text-3xl font-light text-muted-foreground italic mb-4">
-            "Anything one man can imagine, other man can make real."
+            Anything one man can imagine, other man can make real.
           </blockquote>
           <cite className="text-primary font-medium">— Jules Verne</cite>
         </div>
