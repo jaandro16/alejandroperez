@@ -38,9 +38,9 @@ const tools = [
 export default function AboutPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [githubStats, setGithubStats] = useState({
-    contributions: 247,
+    contributions: 0,
     streak: 15,
-    repositories: 23,
+    repositories: 11,
   });
 
   useEffect(() => {
