@@ -312,7 +312,7 @@
 
 /* Enhanced animation classes */
 .animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out;
+  animation: fadeInUp 0.3s ease-out;
 }
 
 .animate-slide-in-left {

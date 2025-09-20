@@ -145,7 +145,7 @@ export default function HomePage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <blockquote className="text-2xl sm:text-3xl font-light text-muted-foreground italic mb-4">
-            Anything one man can imagine, other man can make real.
+            &ldquo;Anything one man can imagine, other man can make real.&rdquo;
           </blockquote>
           <cite className="text-primary font-medium">— Jules Verne</cite>
         </div>
