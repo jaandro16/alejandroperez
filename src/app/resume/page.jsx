@@ -24,25 +24,32 @@ const resumeData = {
     name: 'Alejandro Pérez Rentero',
     title: 'Junior Web Developer',
     location: 'Madrid, Spain',
-    phone: '+34 XXX XXX XXX',
+    phone: '+34 673 809 547',
     email: 'jandroperezrentero12@gmail.com',
   },
   experience: [
     {
-      title: 'Junior Web Developer',
-      company: 'Freelance',
-      period: '2023 - Present',
+      title: 'Full-Stack Web Developer',
+      company: 'Universidad Politécnica de Madrid',
+      period: '2025',
       description:
-        'Developing modern web applications using React, Next.js, and Node.js',
+        'Development of an integrated web platform within the Universidad Politécnica de Madrid system that enables autonomous management of educational resources and classroom reservations between users. Laravel, PostgreSQL',
     },
-    // Puedes agregar más experiencias aquí
+    {
+      title: 'Full-Stack Web Developer',
+      company: 'Freelance',
+      period: '2024-2025',
+      description:
+        'Development of a web application for a business managing orders, users and integrated administration panels for autonomous use of the platform by the business. Next.js, Tailwind CSS, PostgreSQL',
+    },
   ],
   education: [
     {
-      degree: 'Web Development Course',
-      institution: 'Various Online Platforms',
-      period: '2022 - 2023',
-      description: 'Full-stack web development, JavaScript, React, Node.js',
+      degree: 'Desarrollo de Aplicaciones Web',
+      institution: 'IES Isidra de Guzmán',
+      period: '2023 - 2025',
+      description:
+        'Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web',
     },
   ],
   skills: [
@@ -50,6 +57,7 @@ const resumeData = {
     'React',
     'Next.js',
     'Node.js',
+    'C#',
     'HTML5',
     'CSS3',
     'Python',
