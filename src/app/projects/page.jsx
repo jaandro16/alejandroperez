@@ -13,7 +13,7 @@ const projects = [
     title: 'Butcher Shop E-Commerce',
     description:
       'A full-stack e-commerce web application for a butcher shop, featuring online ordering system, real-time inventory management, and direct communication with the establishment for custom orders and inquiries. Private Respository',
-    image: '/modern-ecommerce-interface.png',
+    image: '/Carniceria.png',
     technologies: ['Next.js', 'PostgreSQL', 'Tailwind CSS'],
     githubUrl: '',
     demoUrl: 'https://carniceriaelviso.com',
@@ -24,7 +24,7 @@ const projects = [
     title: 'Classroom Management System',
     description:
       'AulaTec is a web platform that revolutionizes classroom management in educational institutions. The system allows students to reserve seats through an interactive classroom map, register attendance via QR codes, and manage their reservations autonomously.',
-    image: '/task-management-dashboard.png',
+    image: '/AulaTec.png',
     technologies: ['Laravel', 'MySQL', 'Docker', 'Bootstrap'],
     githubUrl: 'https://github.com/jaandro16/AulaTec.git',
     demoUrl: '',
@@ -35,7 +35,7 @@ const projects = [
     title: 'Virtual Academy Platform',
     description:
       'Log In of a virtual academy developed with Java. It is a simulation created to apply the basic knowledge acquired about structured programming in Java packages.',
-    image: '/preview/project4.png',
+    image: '/Ciberseguridad.jpg',
     technologies: ['Java'],
     githubUrl: 'https://github.com/jaandro16/MiPrimerRespositorio.git',
     demoUrl: '',
