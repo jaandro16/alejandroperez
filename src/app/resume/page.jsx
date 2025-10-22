@@ -17,6 +17,7 @@ import {
   Code,
   Briefcase,
   GraduationCap,
+  Shield,
 } from 'lucide-react';
 
 const resumeData = {
@@ -28,6 +29,13 @@ const resumeData = {
     email: 'jandroperezrentero12@gmail.com',
   },
   experience: [
+    {
+      title: 'Robotics and Video Game Development Teacher',
+      company: 'Colegio Educrea',
+      period: '2025',
+      description:
+        'Teaching robotics programming and video game development fundamentals to students from 6 to 13 years old, covering programming concepts, game design principles, and robotics automation.',
+    },
     {
       title: 'Full-Stack Web Developer',
       company: 'Universidad Politécnica de Madrid',
@@ -45,11 +53,18 @@ const resumeData = {
   ],
   education: [
     {
+      degree: "Cibersecurity Master's",
+      institution: 'Alborada FP',
+      period: '2025 - 2026',
+      description:
+        'Higher vocational training cycle specialized in cybersecurity, network security, ethical hacking, and digital forensics',
+    },
+    {
       degree: 'Desarrollo de Aplicaciones Web',
       institution: 'IES Isidra de Guzmán',
       period: '2023 - 2025',
       description:
-        'Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web',
+        'Higher vocational training cycle specialized in web application development',
     },
   ],
   skills: [
@@ -66,6 +81,14 @@ const resumeData = {
     'PostgreSQL',
     'Git',
     'Docker',
+  ],
+  cybersecuritySkills: [
+    'Risk Assessment',
+    'Incident Management',
+    'Ethical Hacking',
+    'Network and Server Hardening',
+    'Secure Production Deployment',
+    'Digital Forensic Analysis',
   ],
 };
 
@@ -128,12 +151,12 @@ export default function ResumePage() {
         </CardContent>
       </Card>
 
-      {/* Skills */}
+      {/* Technical Skills */}
       <Card className='bg-card border-border'>
         <CardHeader>
           <CardTitle className='flex items-center gap-2 text-white'>
             <Code size={20} className='text-primary' />
-            Technical Skills
+            Web Development Skills
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -145,6 +168,29 @@ export default function ResumePage() {
               >
                 {skill}
               </span>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Cybersecurity Skills */}
+      <Card className='bg-card border-border'>
+        <CardHeader>
+          <CardTitle className='flex items-center gap-2 text-white'>
+            <Shield size={21} className='text-primary' />
+            Cybersecurity Skills
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
+            {resumeData.cybersecuritySkills.map((skill, index) => (
+              <div
+                key={index}
+                className='flex items-center gap-2 px-3 py-2 bg-primary/10 text-white rounded-lg text-sm border border-primary/20'
+              >
+                <div className='w-2 h-2 bg-primary rounded-full flex-shrink-0' />
+                <span>{skill}</span>
+              </div>
             ))}
           </div>
         </CardContent>
