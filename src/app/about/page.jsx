@@ -10,6 +10,13 @@ import {
   Calendar,
   GitBranch,
   Star,
+  Wifi,
+  Bug,
+  Terminal,
+  Search,
+  Eye,
+  Lock,
+  Cpu,
 } from 'lucide-react';
 
 const skills = [
@@ -33,6 +40,17 @@ const tools = [
   { name: 'Postman', icon: '📮' },
   { name: 'Docker', icon: '🐳' },
   { name: 'Vercel', icon: '▲' },
+];
+
+const cyberSkills = [
+  { name: 'Nmap', icon: Wifi, desc: 'Network scanning' },
+  { name: 'Burp Suite', icon: Bug, desc: 'Web app testing' },
+  { name: 'Metasploit', icon: Terminal, desc: 'Exploitation framework' },
+  { name: 'Wireshark', icon: Search, desc: 'Packet analysis' },
+  { name: 'Autopsy', icon: Eye, desc: 'Digital forensics' },
+  { name: 'Hashcat', icon: Lock, desc: 'Password cracking' },
+  { name: 'Volatility', icon: Cpu, desc: 'Memory forensics' },
+  { name: 'OWASP ZAP', icon: Shield, desc: 'Security testing' },
 ];
 
 export default function AboutPage() {
@@ -158,6 +176,38 @@ export default function AboutPage() {
               </div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Cybersecurity Toolkit */}
+        <div
+          className={`mb-16 transition-all duration-1000 delay-450 ${
+            isVisible ? 'animate-fade-in-up' : 'opacity-0'
+          }`}
+        >
+          <h2 className='text-3xl text-white font-semibold mb-2 text-center'>
+            Cybersecurity Toolkit
+          </h2>
+          <p className='text-muted-foreground text-center mb-8'>
+            Pentesting, Forensics & Security Tools
+          </p>
+          <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
+            {cyberSkills.map((tool) => (
+              <div
+                key={tool.name}
+                className='group p-4 rounded-xl bg-card/80 border border-border hover:border-primary/30 transition-all duration-300 hover-lift text-center'
+              >
+                <div className='w-10 h-10 mx-auto mb-3 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors'>
+                  <tool.icon className='text-primary' size={20} />
+                </div>
+                <span className='text-sm font-medium text-foreground block'>
+                  {tool.name}
+                </span>
+                <span className='text-xs text-muted-foreground'>
+                  {tool.desc}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Tools I Use */}

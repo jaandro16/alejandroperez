@@ -1,15 +1,54 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Github, Linkedin, ArrowDown, Code, Zap, Globe, MapPin } from "lucide-react"
+import { Github, Linkedin, ArrowDown, Code, Zap, Globe, MapPin, Shield, Bug, Lock, Workflow, Scan, Database } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false)
+  const [typingText, setTypingText] = useState("")
+  const [wordIndex, setWordIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  const words = [
+    "Web Developer",
+    "Forensics Curious",
+    "Pentesting Enthusiast",
+    "SecDevOps Learner",
+    "DFIR Explorer",
+  ]
 
   useEffect(() => {
     setIsVisible(true)
   }, [])
+
+  useEffect(() => {
+    const currentWord = words[wordIndex]
+    const typingSpeed = isDeleting ? 40 : 80
+    const pauseBeforeDelete = 1000
+    const pauseBeforeNext = 300
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        const nextText = currentWord.slice(0, typingText.length + 1)
+        setTypingText(nextText)
+
+        if (nextText === currentWord) {
+          setTimeout(() => setIsDeleting(true), pauseBeforeDelete)
+        }
+      } else {
+        const nextText = currentWord.slice(0, typingText.length - 1)
+        setTypingText(nextText)
+
+        if (nextText === "") {
+          setIsDeleting(false)
+          setWordIndex((prev) => (prev + 1) % words.length)
+        }
+      }
+    }, typingSpeed)
+
+    return () => clearTimeout(timeout)
+  }, [typingText, isDeleting, wordIndex, words])
 
   return (
     <div className="min-h-screen">
@@ -24,14 +63,14 @@ export default function HomePage() {
                 <span className="gradient-text">Alejandro Pérez</span>
               </h1>
               <h2 className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-6 font-light">
-                Junior Web Developer
+                {typingText}
+                <span className="inline-block w-[1ch] text-primary animate-pulse">|</span>
               </h2>
             </div>
             {/* Description */}
             <div className="mb-12">
               <p className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-                I build accessible, pixel-perfect digital experiences for the web. Passionate about creating modern,
-                responsive applications with clean code and exceptional user interfaces.
+                Web developer building modern, secure applications. Currently specializing in cybersecurity with a focus on secure development practices, pentesting, and digital forensics.
               </p>
               
               {/* Location and Status */}
@@ -105,37 +144,69 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <h3 className="text-3xl sm:text-4xl font-bold mb-4 gradient-text">What I Do</h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Specializing in modern web technologies to create exceptional digital experiences
+              Building secure digital experiences across development, security, and operations
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div className="text-center p-6 rounded-lg bg-card border border-border hover-lift">
               <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
                 <Code className="text-primary" size={32} />
               </div>
-              <h4 className="text-xl text-white font-semibold mb-2">Frontend Development</h4>
+              <h4 className="text-xl text-white font-semibold mb-2">Web Development</h4>
               <p className="text-muted-foreground">
-                Building responsive, interactive user interfaces with React, Next.js, and modern CSS frameworks
+                Modern, responsive web apps with strong UX and performance foundations.
               </p>
             </div>
 
             <div className="text-center p-6 rounded-lg bg-card border border-border hover-lift">
               <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                <Zap className="text-primary" size={32} />
+                <Bug className="text-primary" size={32} />
               </div>
-              <h4 className="text-xl text-white font-semibold mb-2">Backend Development</h4>
+              <h4 className="text-xl text-white font-semibold mb-2">Pentesting</h4>
               <p className="text-muted-foreground">
-                Creating robust server-side applications with Node.js, Django, and database management
+                Identifying and validating vulnerabilities through ethical testing.
               </p>
             </div>
 
             <div className="text-center p-6 rounded-lg bg-card border border-border hover-lift">
               <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                <Globe className="text-primary" size={32} />
+                <Lock className="text-primary" size={32} />
               </div>
-              <h4 className="text-xl text-white font-semibold mb-2">Full Stack Solutions</h4>
-              <p className="text-muted-foreground">End-to-end web application development from concept to deployment</p>
+              <h4 className="text-xl text-white font-semibold mb-2">Hardening</h4>
+              <p className="text-muted-foreground">
+                Reducing attack surface with secure configurations and controls.
+              </p>
+            </div>
+
+            <div className="text-center p-6 rounded-lg bg-card border border-border hover-lift">
+              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+                <Workflow className="text-primary" size={32} />
+              </div>
+              <h4 className="text-xl text-white font-semibold mb-2">SecDevOps</h4>
+              <p className="text-muted-foreground">
+                Embedding security into CI/CD pipelines and delivery workflows.
+              </p>
+            </div>
+
+            <div className="text-center p-6 rounded-lg bg-card border border-border hover-lift">
+              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+                <Scan className="text-primary" size={32} />
+              </div>
+              <h4 className="text-xl text-white font-semibold mb-2">DFIR</h4>
+              <p className="text-muted-foreground">
+                Incident response and recovery with a data-driven approach.
+              </p>
+            </div>
+
+            <div className="text-center p-6 rounded-lg bg-card border border-border hover-lift">
+              <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+                <Database className="text-primary" size={32} />
+              </div>
+              <h4 className="text-xl text-white font-semibold mb-2">Forensics</h4>
+              <p className="text-muted-foreground">
+                Analyzing digital evidence to understand and document incidents.
+              </p>
             </div>
           </div>
         </div>
