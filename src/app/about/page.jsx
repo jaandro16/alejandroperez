@@ -46,7 +46,7 @@ const cyberSkills = [
   { name: 'Nmap', icon: Wifi, desc: 'Network scanning' },
   { name: 'Burp Suite', icon: Bug, desc: 'Web app testing' },
   { name: 'Metasploit', icon: Terminal, desc: 'Exploitation framework' },
-  { name: 'Wireshark', icon: Search, desc: 'Packet analysis' },
+  { name: 'Maltego', icon: Search, desc: 'OSINT tool' },
   { name: 'Autopsy', icon: Eye, desc: 'Digital forensics' },
   { name: 'Hashcat', icon: Lock, desc: 'Password cracking' },
   { name: 'Volatility', icon: Cpu, desc: 'Memory forensics' },
