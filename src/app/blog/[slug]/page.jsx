@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { Badge } from '../../components/ui/badge';
+import { Badge } from '../../../components/ui/badge';
 import {
   Calendar,
   Clock,
