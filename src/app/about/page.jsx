@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import GitHubCalendar from 'react-github-calendar';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '../../components/ui/card';
 import {
   Dumbbell,
   Plane,

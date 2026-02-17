@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Github, Linkedin, ArrowDown, Code, Zap, Globe, MapPin, Shield, Bug, Lock, Workflow, Scan, Database } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "../components/ui/button"
 
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false)

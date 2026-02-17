@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Badge } from '../../components/ui/badge';
 import { Github, ExternalLink, Code, Database, Globe } from 'lucide-react';
 import Image from 'next/image';
 
@@ -59,7 +64,7 @@ export default function ProjectsPage() {
       setFilteredProjects(projects);
     } else {
       setFilteredProjects(
-        projects.filter((project) => project.category === selectedCategory)
+        projects.filter((project) => project.category === selectedCategory),
       );
     }
   }, [selectedCategory]);

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '../../components/ui/card';
+import { Badge } from '../../components/ui/badge';
 import { Award, ExternalLink, Calendar, Terminal, Shield } from 'lucide-react';
 
 function AnimatedSection({ children, className = '', delay = 0 }) {

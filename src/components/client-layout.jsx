@@ -1,9 +1,9 @@
 'use client';
 import { Geist, Geist_Mono } from 'next/font/google';
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
-import FloatingParticles from '@/components/floating-particles';
-import LoadingScreen from '@/components/loading-screen';
+import Navbar from './navbar';
+import Footer from './footer';
+import FloatingParticles from './floating-particles';
+import LoadingScreen from './loading-screen';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
