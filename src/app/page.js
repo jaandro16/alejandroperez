@@ -70,7 +70,7 @@ export default function HomePage() {
             {/* Description */}
             <div className="mb-12">
               <p className="text-lg sm:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto leading-relaxed">
-                Web developer building modern, secure applications. Currently specializing in cybersecurity with a focus on secure development practices, pentesting, and digital forensics.
+                Master’s student in Cybersecurity with a technical background in software development and both offensive and defensive security. Interested in technical investigations, digital forensics, and incident response. Junior profile with a strong learning ability.
               </p>
               
               {/* Location and Status */}
