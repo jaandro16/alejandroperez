@@ -17,29 +17,50 @@ import {
   Eye,
   Lock,
   Cpu,
+  Database,
+  AlertTriangle,
+  BookOpen,
+  Zap,
+  Code2,
+  Mail,
+  Package,
+  Cloud,
 } from 'lucide-react';
 
-const skills = [
-  { name: 'Django', color: 'bg-green-500' },
-  { name: 'JavaScript', color: 'bg-yellow-500' },
-  { name: 'Node.js', color: 'bg-green-600' },
-  { name: 'React', color: 'bg-blue-500' },
-  { name: 'HTML5', color: 'bg-orange-500' },
-  { name: 'CSS', color: 'bg-blue-600' },
-  { name: 'MySQL', color: 'bg-blue-700' },
-  { name: 'Git', color: 'bg-red-500' },
-  { name: 'PostgreSQL', color: 'bg-blue-800' },
-  { name: 'Python', color: 'bg-yellow-600' },
-  { name: 'Java', color: 'bg-red-600' },
-  { name: 'C#', color: 'bg-purple-600' },
+// const skills = [
+//   { name: 'Django', color: 'bg-green-500' },
+//   { name: 'JavaScript', color: 'bg-yellow-500' },
+//   { name: 'Node.js', color: 'bg-green-600' },
+//   { name: 'React', color: 'bg-blue-500' },
+//   { name: 'HTML5', color: 'bg-orange-500' },
+//   { name: 'CSS', color: 'bg-blue-600' },
+//   { name: 'MySQL', color: 'bg-blue-700' },
+//   { name: 'Git', color: 'bg-red-500' },
+//   { name: 'PostgreSQL', color: 'bg-blue-800' },
+//   { name: 'Python', color: 'bg-yellow-600' },
+//   { name: 'Java', color: 'bg-red-600' },
+//   { name: 'C#', color: 'bg-purple-600' },
+// ];
+
+const securityFrameworks = [
+  { name: 'MISP', icon: Database, desc: 'Threat intelligence sharing' },
+  {
+    name: 'MITRE ATT&CK',
+    icon: AlertTriangle,
+    desc: 'Adversary tactics & techniques',
+  },
+  { name: 'OWASP Top 10', icon: BookOpen, desc: 'Web security risks' },
+  { name: 'CVSS', icon: Zap, desc: 'Vulnerability scoring' },
+  { name: 'CIS Controls', icon: Shield, desc: 'Security best practices' },
+  { name: 'NIST Framework', icon: Lock, desc: 'Cybersecurity standards' },
 ];
 
 const tools = [
-  { name: 'Astro', icon: '🚀' },
-  { name: 'VS Code', icon: '💻' },
-  { name: 'Postman', icon: '📮' },
-  { name: 'Docker', icon: '🐳' },
-  { name: 'Vercel', icon: '▲' },
+  { name: 'Git', icon: GitBranch, desc: 'Version control' },
+  { name: 'VS Code', icon: Code2, desc: 'Code editor' },
+  { name: 'Postman', icon: Mail, desc: 'API testing' },
+  { name: 'Docker', icon: Package, desc: 'Containerization' },
+  { name: 'Vercel', icon: Cloud, desc: 'Deployment' },
 ];
 
 const cyberSkills = [
@@ -68,9 +89,9 @@ export default function AboutPage() {
   }, []);
 
   // Tema personalizado corregido para el calendario de GitHub
-  const calendarTheme = {
-    dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
-  };
+  // const calendarTheme = {
+  //   dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
+  // };
 
   return (
     <div className='min-h-screen py-20 px-4 sm:px-6 lg:px-8'>
@@ -143,33 +164,32 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Professional Skillset */}
+        {/* Security Frameworks & Standards */}
         <div
           className={`mb-16 transition-all duration-1000 delay-400 ${
             isVisible ? 'animate-fade-in-up' : 'opacity-0'
           }`}
         >
           <h2 className='text-3xl text-white font-semibold mb-8 text-center'>
-            Professional Skillset
+            Security Frameworks & Standards
           </h2>
           <Card className='bg-card border-border'>
             <CardContent className='p-8'>
-              <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4'>
-                {skills.map((skill, index) => (
+              <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4'>
+                {securityFrameworks.map((framework, index) => (
                   <div
-                    key={skill.name}
+                    key={framework.name}
                     className='flex flex-col items-center p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors hover-lift'
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <div
-                      className={`w-12 h-12 rounded-full ${skill.color} mb-3 flex items-center justify-center`}
-                    >
-                      <span className='text-white font-bold text-sm'>
-                        {skill.name.charAt(0)}
-                      </span>
+                    <div className='w-12 h-12 rounded-full bg-red-500/20 mb-3 flex items-center justify-center'>
+                      <framework.icon className='text-red-400' size={24} />
                     </div>
                     <span className='text-sm font-medium text-center text-white'>
-                      {skill.name}
+                      {framework.name}
+                    </span>
+                    <span className='text-xs text-muted-foreground text-center mt-2'>
+                      {framework.desc}
                     </span>
                   </div>
                 ))}
@@ -228,9 +248,14 @@ export default function AboutPage() {
                     className='flex flex-col items-center p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors hover-lift'
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <div className='text-3xl mb-3'>{tool.icon}</div>
+                    <div className='w-12 h-12 rounded-full bg-purple-500/20 mb-3 flex items-center justify-center'>
+                      <tool.icon className='text-purple-400' size={24} />
+                    </div>
                     <span className='text-sm font-medium text-center text-white'>
                       {tool.name}
+                    </span>
+                    <span className='text-xs text-muted-foreground text-center mt-2'>
+                      {tool.desc}
                     </span>
                   </div>
                 ))}
@@ -240,7 +265,7 @@ export default function AboutPage() {
         </div>
 
         {/* Days I Code - GitHub Stats */}
-        <div
+        {/* <div
           className={`transition-all duration-1000 delay-600 ${
             isVisible ? 'animate-fade-in-up' : 'opacity-0'
           }`}
@@ -286,11 +311,9 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* GitHub Calendar */}
+              
               <div className='mt-8 p-6 rounded-lg bg-muted/30 hidden md:block'>
-                {/* <h3 className='text-xl font-semibold text-center mb-6 text-white'>
-                  GitHub Activity Calendar
-                </h3> */}
+                
                 <div className='flex justify-center overflow-x-auto'>
                   <GitHubCalendar
                     username='jaandro16'
@@ -323,7 +346,7 @@ export default function AboutPage() {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </div> */}
       </div>
     </div>
   );
