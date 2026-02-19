@@ -104,7 +104,7 @@ export default function ResumePage() {
 
   useEffect(() => {
     setIsVisible(true);
-    setPdfUrl('/CV_AlejandroPerezRentero.pdf');
+    setPdfUrl('/AlejandroPerezRentero_CV.pdf');
 
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -118,13 +118,13 @@ export default function ResumePage() {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/CV_AlejandroPerezRentero.pdf';
-    link.download = 'CV_AlejandroPerezRentero.pdf';
+    link.href = '/AlejandroPerezRentero_CV.pdf';
+    link.download = 'AlejandroPerezRentero_CV.pdf';
     link.click();
   };
 
   const handleViewFullscreen = () => {
-    window.open('/CV_AlejandroPerezRentero.pdf', '_blank');
+    window.open('/AlejandroPerezRentero_CV.pdf', '_blank');
   };
 
   // Componente para la vista móvil del CV
