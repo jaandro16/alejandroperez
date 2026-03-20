@@ -24,6 +24,19 @@ const articles = [
     readTime: '3 min',
     category: 'Cybersecurity',
     tags: ['Deepfakes', 'Privacy', 'Digital Safety', 'OSINT'],
+    isNew: false,
+  },
+  {
+    id: 2,
+    slug: 'modbus-entornos-industriales-exposicion-riesgos',
+    title:
+      'Modbus en entornos industriales: exposición, riesgos y una realidad incómoda',
+    excerpt:
+      'Modbus sigue muy presente en la industria y en infraestructuras críticas, pero su simplicidad arrastra limitaciones de seguridad que no podemos ignorar.',
+    date: '2026-03-20',
+    readTime: '6 min',
+    category: 'OT Security',
+    tags: ['Modbus', 'ICS', 'SCADA', 'Cybersecurity'],
     isNew: true,
   },
 ];
@@ -92,73 +105,75 @@ export default function BlogPage() {
 
         {/* Article */}
         <div className='mb-10'>
-          {articles.map((article, index) => (
-            <AnimatedSection key={article.id} delay={index * 80}>
-              <Link href={`/blog/${article.slug}`}>
-                <Card className='group bg-card/50 border-border hover:border-primary/30 transition-all duration-500 hover-lift cursor-pointer overflow-hidden'>
-                  <CardContent className='p-6 sm:p-8'>
-                    <div className='flex flex-col gap-4'>
-                      {/* Top row: category + NEW badge + date */}
-                      <div className='flex items-center justify-between flex-wrap gap-2'>
-                        <div className='flex items-center gap-2'>
-                          <Badge
-                            variant='outline'
-                            className='text-[10px] px-2 py-0.5 border-primary/40 text-primary'
-                          >
-                            {article.category}
-                          </Badge>
-                          {article.isNew && (
-                            <span className='px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary text-primary-foreground animate-pulse'>
-                              NEW
-                            </span>
-                          )}
-                        </div>
-                        <div className='flex items-center gap-4 text-xs text-muted-foreground'>
-                          <span className='inline-flex items-center gap-1'>
-                            <Calendar size={12} />
-                            {formatDate(article.date)}
-                          </span>
-                          <span className='inline-flex items-center gap-1'>
-                            <Clock size={12} />
-                            {article.readTime}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Title */}
-                      <h2 className='text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight'>
-                        {article.title}
-                      </h2>
-
-                      {/* Excerpt */}
-                      <p className='text-muted-foreground text-sm leading-relaxed line-clamp-2'>
-                        {article.excerpt}
-                      </p>
-
-                      {/* Bottom row: tags + read more */}
-                      <div className='flex items-end justify-between flex-wrap gap-3'>
-                        <div className='flex flex-wrap gap-1.5'>
-                          {article.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className='inline-flex items-center gap-1 text-[10px] text-muted-foreground bg-muted/30 px-2 py-0.5 rounded'
+          {[...articles]
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .map((article, index) => (
+              <AnimatedSection key={article.id} delay={index * 80}>
+                <Link href={`/blog/${article.slug}`}>
+                  <Card className='group bg-card/50 border-border hover:border-primary/30 transition-all duration-500 hover-lift cursor-pointer overflow-hidden'>
+                    <CardContent className='p-6 sm:p-8'>
+                      <div className='flex flex-col gap-4'>
+                        {/* Top row: category + NEW badge + date */}
+                        <div className='flex items-center justify-between flex-wrap gap-2'>
+                          <div className='flex items-center gap-2'>
+                            <Badge
+                              variant='outline'
+                              className='text-[10px] px-2 py-0.5 border-primary/40 text-primary'
                             >
-                              <Tag size={8} />
-                              {tag}
+                              {article.category}
+                            </Badge>
+                            {article.isNew && (
+                              <span className='px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-primary text-primary-foreground animate-pulse'>
+                                NEW
+                              </span>
+                            )}
+                          </div>
+                          <div className='flex items-center gap-4 text-xs text-muted-foreground'>
+                            <span className='inline-flex items-center gap-1'>
+                              <Calendar size={12} />
+                              {formatDate(article.date)}
                             </span>
-                          ))}
+                            <span className='inline-flex items-center gap-1'>
+                              <Clock size={12} />
+                              {article.readTime}
+                            </span>
+                          </div>
                         </div>
-                        <span className='inline-flex items-center gap-1 text-primary text-sm font-medium group-hover:gap-2 transition-all'>
-                          Read more
-                          <ArrowRight size={14} />
-                        </span>
+
+                        {/* Title */}
+                        <h2 className='text-xl sm:text-2xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight'>
+                          {article.title}
+                        </h2>
+
+                        {/* Excerpt */}
+                        <p className='text-muted-foreground text-sm leading-relaxed line-clamp-2'>
+                          {article.excerpt}
+                        </p>
+
+                        {/* Bottom row: tags + read more */}
+                        <div className='flex items-end justify-between flex-wrap gap-3'>
+                          <div className='flex flex-wrap gap-1.5'>
+                            {article.tags.map((tag) => (
+                              <span
+                                key={tag}
+                                className='inline-flex items-center gap-1 text-[10px] text-muted-foreground bg-muted/30 px-2 py-0.5 rounded'
+                              >
+                                <Tag size={8} />
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          <span className='inline-flex items-center gap-1 text-primary text-sm font-medium group-hover:gap-2 transition-all'>
+                            Read more
+                            <ArrowRight size={14} />
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            </AnimatedSection>
-          ))}
+                    </CardContent>
+                  </Card>
+                </Link>
+              </AnimatedSection>
+            ))}
         </div>
       </div>
     </div>

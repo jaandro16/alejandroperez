@@ -61,6 +61,138 @@ Quiero que este espacio sea un lugar donde compartir conocimientos que puedan ay
 
     `,
   },
+  'modbus-entornos-industriales-exposicion-riesgos': {
+    title:
+      'Modbus en entornos industriales: exposición, riesgos y una realidad incómoda',
+    date: '2026-03-20',
+    readTime: '6 min',
+    category: 'OT Security',
+    tags: ['Modbus', 'ICS', 'SCADA', 'Cybersecurity'],
+    content: `
+## Introducción
+
+Modbus sigue siendo, a día de hoy, uno de los protocolos más utilizados dentro de la industria.
+
+No es algo residual ni heredado. Está presente en sistemas SCADA, en automatización industrial y en infraestructuras críticas que utilizamos a diario, como estaciones de servicio o plantas de almacenamiento.
+
+Su éxito es fácil de entender: es simple, robusto y ampliamente soportado.
+
+El problema es que esa simplicidad viene acompañada de limitaciones importantes a nivel de seguridad.
+
+## ¿Qué es Modbus y por qué sigue tan extendido?
+
+Modbus es un protocolo de comunicación industrial diseñado en 1979 para facilitar la comunicación entre dispositivos como PLCs, sensores o sistemas de control.
+
+Fue creado en un contexto donde la conectividad externa no era una preocupación, por lo que carece de elementos que hoy consideramos básicos:
+
+- **No tiene autenticación.**
+- **No cifra las comunicaciones.**
+- **Confía completamente en la red.**
+
+Aun así, sigue siendo ampliamente utilizado porque funciona y porque cambiar infraestructuras industriales no es algo sencillo.
+
+## Puerto típico y exposición en internet
+
+El protocolo Modbus TCP utiliza habitualmente el puerto: **\`502/tcp\`**
+
+Este detalle es clave.
+
+Permite, por ejemplo, identificar dispositivos expuestos utilizando herramientas como Shodan, filtrando por ese puerto.
+
+![Shodan](/Evidencia.png)
+
+No es raro encontrar equipos accesibles directamente desde internet sin ningún tipo de protección adicional.
+
+## Formas de conexión a dispositivos Modbus
+
+Existen distintas formas de interactuar con dispositivos que utilizan Modbus:
+
+- Software especializado de ingeniería.
+- Librerías y herramientas específicas de análisis.
+- Clientes de red básicos.
+
+En este último punto es donde aparece algo especialmente interesante: en ciertos entornos, es posible establecer conexiones directamente con Telnet.
+
+Esto no ocurre en todos los casos, pero cuando sucede, demuestra hasta qué punto algunos sistemas están expuestos y son accesibles con muy poco esfuerzo.
+
+## Interacción básica tras la conexión
+
+Una vez establecida la conexión con el dispositivo, la comunicación se realiza mediante comandos específicos.
+
+Un detalle importante es que, en algunos sistemas, antes de enviar comandos es necesario pulsar **CTRL+A**.
+
+Esto permite iniciar la interacción correctamente con el dispositivo.
+
+Por ejemplo, un comando típico puede ser **I20100**.
+
+Esta es la estrctura que siguen los comandos:
+
+![Conexión Modbus](/Modbus.png)
+
+Este permite consultar información del sistema. En entornos como estaciones de servicio, puede devolver datos relacionados con inventario o estado de tanques.
+
+### Ejemplo de salida en terminal
+
+    Connection to X.X.X.X port 10001 [tcp/scp-config] succeeded!
+    ^AI20100
+
+    I20100
+        20-03-26 13:44
+    INVENTARIO EN TANQUE
+
+    PRODUCTO TANQ              VOL    VOL CT    POR LL   ALTURA    AGUA      TEMP
+      1  GAS A1               14488     14341     3847   1456.4      0.0    28.17
+      2  SP95                  9719      9572     9780   1076.9      0.0    27.74
+      3  GAS A2               10950     10832     8550   1182.6      0.0    28.47
+      4  GAS A3               10772     10662     8728   1181.8      0.0    27.98
+      5  GASOLEO B             4163      4121    15336    568.3      0.0    27.48
+      
+Este tipo de información, dependiendo del contexto, puede ser extremadamente sensible.
+
+## Escritura de valores y comandos críticos
+
+Más allá de la lectura de información, existen comandos que permiten modificar valores en el sistema.
+
+Un ejemplo es **S602TT**.
+
+Utilizado correctamente, este tipo de comando permite alterar valores con bastante libertad.
+
+Esto es especialmente problemático porque:
+
+- Puede modificar datos que otros sistemas (como PLCs) utilizan para tomar decisiones.
+- Puede generar inconsistencias en la lógica de control.
+- Puede provocar comportamientos inesperados en procesos físicos.
+
+En entornos como estaciones de servicio, donde se gestionan combustibles, esto no es solo un problema técnico. Puede convertirse en un riesgo operativo real si los datos dejan de ser fiables.
+
+## Un problema estructural
+
+El problema no es únicamente Modbus.
+
+Es el contexto en el que se sigue utilizando:
+
+- Sistemas críticos conectados a redes cada vez más abiertas.
+- Protocolos diseñados sin seguridad.
+- Exposición directa a internet en algunos casos.
+
+Todo esto crea un escenario donde la accesibilidad y el riesgo van de la mano.
+
+## Recursos adicionales
+
+Si quieres profundizar más en los comandos y funcionamiento interno de estos sistemas, puedes consultar este documento de referencia:
+
+[https://cdn.chipkin.com/files/liz/576013-635.pdf](https://cdn.chipkin.com/files/liz/576013-635.pdf)
+
+## Conclusión
+
+Modbus sigue siendo fundamental en la industria.
+
+Pero también es un recordatorio claro de cómo muchas infraestructuras críticas siguen dependiendo de tecnologías que no fueron diseñadas para el mundo actual.
+
+Entender cómo funcionan, cómo se exponen y qué implicaciones tienen es clave para cualquier profesional de la ciberseguridad industrial.
+
+`,
+  },
 };
 
 function formatDate(dateStr) {
@@ -184,6 +316,30 @@ export default function BlogArticlePage() {
                   className='text-primary hover:text-primary/80 underline font-medium'
                   target='_blank'
                   rel='noopener noreferrer'
+                  {...props}
+                />
+              ),
+
+              img: ({ node, ...props }) => (
+                <img
+                  className='block mx-auto w-[62%] max-w-[220px] sm:w-[72%] sm:max-w-[340px] md:w-full md:max-w-[520px] rounded-lg border border-border'
+                  loading='lazy'
+                  {...props}
+                />
+              ),
+
+              // Bloque tipo terminal
+              pre: ({ node, ...props }) => (
+                <pre
+                  className='text-white font-mono whitespace-pre overflow-x-auto mb-4'
+                  {...props}
+                />
+              ),
+
+              // Código inline y dentro de bloque
+              code: ({ node, inline, className, ...props }) => (
+                <code
+                  className={`${className || ''} font-mono text-white`}
                   {...props}
                 />
               ),
